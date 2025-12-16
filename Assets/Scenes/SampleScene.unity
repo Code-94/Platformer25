@@ -741,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
+  _jumpForce: 200
 --- !u!114 &4231546931900382187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,7 +784,19 @@ MonoBehaviour:
     m_ActionId: dc44c521-2624-4640-b0fb-827e2a31e2a4
     m_ActionName: 'Player/New action[/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4231546931900382186}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4efc952c-1eba-4eb8-bfb4-531536aad616
     m_ActionName: 'Player/Jump[/Keyboard/w]'
   - m_PersistentCalls:
