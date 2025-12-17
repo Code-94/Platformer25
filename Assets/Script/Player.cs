@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
         Vector2 movement = new Vector2(_moveInput * _speed, Time.deltaTime);
         _prb.linearVelocity = movement;
         
+        _prb.AddForce(Vector2.up * _jumpForce * _jumpInput, ForceMode2D.Impulse);
         
-        _prb.AddForce(transform.up * _jumpForce * _jumpInput);
 
 
     }
@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("is jumping : " + ctx.ReadValue<float>());
         _jumpInput = ctx.ReadValue<float>();
+        
+        
         
     }
 }
