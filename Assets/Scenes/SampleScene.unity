@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 1382982546}
   m_Layer: 0
   m_Name: Plateform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -952,11 +952,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8606579595526582915, guid: a209bc3ca318f534db1c865db8a16d5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.61
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 8606579595526582915, guid: a209bc3ca318f534db1c865db8a16d5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.63
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 8606579595526582915, guid: a209bc3ca318f534db1c865db8a16d5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _jumpForce: 20
+  _jumpForce: 30
 --- !u!114 &4231546931900382187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,8 +1056,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4231546931900382186}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnMove
+        m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+        m_MethodName: OnWalk
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1113,7 +1113,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 30
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
