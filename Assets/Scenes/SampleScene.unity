@@ -429,9 +429,9 @@ GameObject:
   - component: {fileID: 1382982548}
   - component: {fileID: 1382982547}
   - component: {fileID: 1382982546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plateform
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -934,6 +934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3474701744692137812, guid: a209bc3ca318f534db1c865db8a16d5c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5550905352109817152, guid: a209bc3ca318f534db1c865db8a16d5c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.305
@@ -1026,8 +1030,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bbcf984d1e39a44b3a152ae38926ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _jumpForce: 30
+  _speed: 15
+  _jumpForce: 80
+  _boxSize: {x: 0.61, y: 0.04}
+  _castDistance: 0.02
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4231546931900382187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,7 +1179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 0.57286537, y: 0.60182464}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
