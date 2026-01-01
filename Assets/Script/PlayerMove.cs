@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+
+    
     //[SerializeField] private float _dashForce;
     
     private float _moveInput;
@@ -13,8 +15,11 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private Vector2 _boxSize;
     
-    [SerializeField ]private float _castDistance;
-    [SerializeField]private LayerMask _groundLayer;
+    [SerializeField] private float _castDistance;
+    [SerializeField] private LayerMask _groundLayer;
+
+    
+    
     //private bool _isGrounded = false;
     
     
@@ -28,17 +33,18 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void FixedUpdate()
     {
         Vector2 movement = new Vector2(_moveInput * _speed, Time.fixedDeltaTime);
-        _prb.linearVelocity = movement;
+        _prb.linearVelocityX = movement.x;
 
         if (IsGrounded())
         {
-            _prb.AddForce(Vector2.up * _jumpInput * _jumpForce, ForceMode2D.Impulse);
+            _prb.linearVelocityY = _jumpInput *  _jumpForce;
+            
         }
         // if (_isGrounded == true)
         // {
@@ -78,6 +84,9 @@ public class PlayerMove : MonoBehaviour
      {
          Gizmos.DrawWireCube(transform.position-transform.up * _castDistance, _boxSize);
      }
+
+
+     
 
 
      // public void OnDash(InputAction.CallbackContext ctx)
