@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
-public class DamageElement : MonoBehaviour
+public class Hit : MonoBehaviour
 {
-    public float _damage;
-    public PlayerHealth _playerHp;
     
+    public float _damage;
+    public PlayerHP _playerHp;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,12 +18,11 @@ public class DamageElement : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Joueur"))
         {
-            _playerHp._currentHp -= _damage;
-            
+            _playerHp._slider.value -= _damage;
         }
     }
 }
