@@ -12,13 +12,18 @@ public class PlayerMove : MonoBehaviour
     
     private float _moveInput;
     private float _jumpInput;
+    
+    private Animator _animator;
+    
 
     [SerializeField] private Vector2 _boxSize;
     
     [SerializeField] private float _castDistance;
     [SerializeField] private LayerMask _groundLayer;
+    //private bool _isFacingRight = true;
 
-    
+    private float _jumpMaxHeight;
+
     
     //private bool _isGrounded = false;
     
@@ -28,6 +33,8 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         _prb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -41,11 +48,40 @@ public class PlayerMove : MonoBehaviour
         Vector2 movement = new Vector2(_moveInput * _speed, Time.fixedDeltaTime);
         _prb.linearVelocityX = movement.x;
 
+        // _isFacingRight = !_isFacingRight;
+        // transform.Rotate(0f, _moveInput, 0f);
+        
+        if (_prb.linearVelocityX > 0)
+        {
+            _animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            {
+                _animator.SetBool("IsRunning", false);
+            }
+        }
+
         if (IsGrounded())
         {
-            _prb.linearVelocityY = _jumpInput *  _jumpForce;
+            _prb.AddForce(_jumpForce *_jumpInput * Vector2.up, ForceMode2D.Impulse);
+            
+             if (_jumpInput > 0)
+             {
+                 _animator.SetBool("IsJumping", true);
+             }
+             else if (_jumpInput <= 0)
+             {
+                 _animator.SetBool("IsJumping", false);
+             }
+            _animator.SetBool("IsFalling", false);
             
         }
+        else if(!IsGrounded())
+        {
+            _animator.SetBool("IsFalling", true);
+        }
+        
         // if (_isGrounded == true)
         // {
         //     _prb.AddForce(Vector2.up * _jumpInput * _jumpForce, ForceMode2D.Impulse);
@@ -84,6 +120,13 @@ public class PlayerMove : MonoBehaviour
      {
          Gizmos.DrawWireCube(transform.position-transform.up * _castDistance, _boxSize);
      }
+
+     
+
+   
+
+     
+         
 
 
      
