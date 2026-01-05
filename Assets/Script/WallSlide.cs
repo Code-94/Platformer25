@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class WallSlide : MonoBehaviour
 {
-    
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

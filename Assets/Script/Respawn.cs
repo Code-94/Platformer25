@@ -1,17 +1,11 @@
+using System;
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class Respawn : MonoBehaviour
 {
+    public GameObject _player;
+    public GameObject _respawnPoint;
     
-    
-    private BoxCollider2D _collider;
-    private Respawn _respawn;
-
-    private void Awake()
-    {
-        _collider = GetComponent<BoxCollider2D>();
-        _respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Respawn>();
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,8 +22,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Joueur"))
         {
-            _respawn._respawnPoint = this.gameObject;
-            _collider.enabled = false;
+            _player.transform.position = _respawnPoint.transform.position;
         }
     }
 }

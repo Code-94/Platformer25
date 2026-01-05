@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _wallForce;
 
     
     //[SerializeField] private float _dashForce;
@@ -14,6 +15,9 @@ public class PlayerMove : MonoBehaviour
     private float _jumpInput;
     
     private Animator _animator;
+
+    public WallJump _wallJump;
+    
     
 
     [SerializeField] private Vector2 _boxSize;
@@ -80,6 +84,12 @@ public class PlayerMove : MonoBehaviour
         else if(!IsGrounded())
         {
             _animator.SetBool("IsFalling", true);
+        }
+
+        if (_wallJump.IsWalled())
+        {
+            _prb.AddForce(_wallForce * _jumpInput * Vector2.right, ForceMode2D.Impulse );
+            Debug.Log("is Walled");
         }
         
         // if (_isGrounded == true)
