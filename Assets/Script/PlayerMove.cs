@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
     
     private Animator _animator;
 
-    public WallJump _wallJump;
+    private WallCheck JJump;
     
     
 
@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     
     [SerializeField] private float _castDistance;
     [SerializeField] private LayerMask _groundLayer;
-    //private bool _isFacingRight = true;
+    private bool _isFacingRight = true;
 
     private float _jumpMaxHeight;
 
@@ -36,9 +36,10 @@ public class PlayerMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _isFacingRight = true;
         _prb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        
+        JJump = GetComponent<WallCheck>();
     }
 
     // Update is called once per frame
@@ -54,17 +55,21 @@ public class PlayerMove : MonoBehaviour
 
         // _isFacingRight = !_isFacingRight;
         // transform.Rotate(0f, _moveInput, 0f);
+
+        
+        
         
         if (_prb.linearVelocityX > 0)
         {
             _animator.SetBool("IsRunning", true);
         }
-        else
+        else 
         {
             {
                 _animator.SetBool("IsRunning", false);
             }
         }
+        
 
         if (IsGrounded())
         {
@@ -86,10 +91,18 @@ public class PlayerMove : MonoBehaviour
             _animator.SetBool("IsFalling", true);
         }
 
-        if (_wallJump.IsWalled())
+        if (JJump.IsWalled())
         {
-            _prb.AddForce(_wallForce * _jumpInput * Vector2.right, ForceMode2D.Impulse );
-            Debug.Log("is Walled");
+            _prb.AddForce(_wallForce * _jumpInput * Vector2.left, ForceMode2D.Impulse );
+            
+        }
+        
+        if (_isFacingRight && movement.x < 0)
+        {
+            Flip();
+        } else if (!_isFacingRight && movement.x > 0)
+        {
+            Flip();
         }
         
         // if (_isGrounded == true)
@@ -114,7 +127,15 @@ public class PlayerMove : MonoBehaviour
         
      }
 
-     public bool IsGrounded()
+     private void Flip()
+     {
+         _isFacingRight = !_isFacingRight;
+         Vector3 theScale = transform.localScale;
+         theScale.x *= -1;
+         transform.localScale = theScale;
+     }
+
+     private bool IsGrounded()
      {
          if (Physics2D.BoxCast(transform.position, _boxSize, 0, -transform.up, _castDistance, _groundLayer ))
          {
@@ -130,6 +151,8 @@ public class PlayerMove : MonoBehaviour
      {
          Gizmos.DrawWireCube(transform.position-transform.up * _castDistance, _boxSize);
      }
+
+     
 
      
 

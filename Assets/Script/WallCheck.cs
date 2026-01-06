@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-public class WallJump : MonoBehaviour
+public class WallCheck : MonoBehaviour
 {
     
-    [SerializeField] private float _castDistance;
+    [SerializeField]private float _castDistance;
     
     [SerializeField]private LayerMask _wallLayer;
     
@@ -29,6 +29,7 @@ public class WallJump : MonoBehaviour
     {
         if (Physics2D.Raycast(transform.position, transform.right, _castDistance, _wallLayer))
         {
+            Debug.Log("is walled");
             return true;
         }
         else
