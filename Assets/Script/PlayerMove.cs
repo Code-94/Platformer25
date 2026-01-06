@@ -28,6 +28,9 @@ public class PlayerMove : MonoBehaviour
 
     private float _jumpMaxHeight;
 
+    public float _coinCount;
+    
+
     
     //private bool _isGrounded = false;
     
@@ -150,6 +153,15 @@ public class PlayerMove : MonoBehaviour
      private void OnDrawGizmos()
      {
          Gizmos.DrawWireCube(transform.position-transform.up * _castDistance, _boxSize);
+     }
+
+     private void OnTriggerEnter2D(Collider2D other)
+     {
+         if (other.gameObject.CompareTag("Coin"))
+         {
+             Destroy(other.gameObject);
+             _coinCount++;
+         }
      }
 
      
