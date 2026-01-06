@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour
     
     public float _currentHp;
     public Image _healthBar;
+    
+    public GameManagerScript _gameManager;
+    
+    private bool _isDead = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,8 +23,10 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         _healthBar.fillAmount = Mathf.Clamp(_currentHp / _maxHp, 0, 1);
-        if (_currentHp == 0)
+        if (_currentHp <= 0 && !_isDead)
         {
+            _isDead = true;
+            _gameManager.GameOver();
             Destroy(gameObject);
             
         }

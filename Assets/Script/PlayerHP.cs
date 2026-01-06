@@ -7,6 +7,9 @@ public class PlayerHP : MonoBehaviour
     public Slider _slider;
 
     public PlayerMove _player;
+    
+    public GameManagerScript _gameManager;
+    private bool _isDead = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,8 +19,10 @@ public class PlayerHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_slider.value == 0)
+        if (_slider.value <= 0 && !_isDead)
         {
+            _isDead = true;
+            _gameManager.GameOver();
             Destroy(_player.gameObject);
         }
     }
