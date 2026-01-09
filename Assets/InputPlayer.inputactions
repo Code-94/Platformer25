@@ -34,9 +34,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CrossThrough",
+                    "name": "Shoot",
                     "type": "Button",
-                    "id": "447d91b3-a767-4b68-8593-cda8b5ac0b9e",
+                    "id": "f44908d7-d48e-4d5f-9877-0292e04ad499",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -156,23 +156,23 @@
                 },
                 {
                     "name": "",
-                    "id": "05d63e1f-ce81-4fd0-a41f-543475555259",
-                    "path": "<DualShockGamepad>/rightStick/down",
+                    "id": "61ae088a-85a4-41e9-9b18-5387325b1aae",
+                    "path": "<DualShockGamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CrossThrough",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "cca0bb4e-5efe-4224-a76f-48aedcf2131c",
-                    "path": "",
+                    "id": "68789392-45e2-4698-b907-d64c3571e3a9",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CrossThrough",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
